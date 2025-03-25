@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: rgb(255, 0, 68);
+}
+html {
+    font-size: 60%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 10%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: 2s;
+}
+.header:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+    box-shadow: rgb(255, 0, 30) 0px 50px 100px -20px, rgb(255, 0, 0) 0px 30px 60px -30px;
+    
+}
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 0 0 15px var(--main-color);
+}
+
+.logo:hover {
+    text-shadow: 0 0 25px var(--main-color);
+}
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 3rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+    cursor: pointer;
+}
+.navbar.show {
+    transform: translateY(0);
+}
+.hea{
+    text-align: center;
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 0 0 15px var(--main-color);
+    margin-top: 200px;
+    margin-left: 60px;
+    transition: 2s;
+}
+.hea:hover{
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.p1 p{
+    left: 100px;
+}
+.p1
+{
+    border: 2px solid red;
+    margin-top:40px ;
+    margin-right: 800px;
+    margin-left:90px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.p1:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color:var(--main-color);
+  border-radius: 50%;
+  border-top: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+.p2{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 40px;
+    margin-left: 800px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.p2:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.dot1 {
+  height: 25px;
+  width: 25px;
+  background-color:var(--main-color);
+  border-radius: 50%;
+  border-top: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+.vl {
+  border-left: 6px solid var(--main-color); 
+  height: 900px; 
+  position: absolute;
+  width: 20px;
+  border-radius: 10px;
+  left: 50%;
+  margin-left: -3px; 
+  top: 0;
+  margin-top: 300px;
+}
+.p3
+{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 800px;
+    margin-left:90px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.p3:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.dot2 {
+  height: 25px;
+  width: 25px;
+  background-color:var(--main-color);
+  border-radius: 50%;
+  border-top: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+.dot3 {
+  height: 25px;
+  width: 25px;
+  background-color:var(--main-color);
+  border-radius: 50%;
+  border-top: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+.p4{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 40px;
+    margin-left: 800px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.p4:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.dot4 {
+  height: 25px;
+  width: 25px;
+  background-color:var(--main-color);
+  border-radius: 50%;
+  border-top: 50px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+.p5
+{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 800px;
+    margin-left:90px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.p5:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.heading{
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    margin-top: 200px;
+    text-align: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 0 0 15px var(--main-color);
+}
+.heading{
+
+    text-shadow: 0 0 25px var(--main-color);
+}
+span{
+    color: var(--main-color);
+}
+.v2 {
+  border-left: 6px solid var(--main-color); 
+  height: 100px; 
+  position: absolute;
+  width: 20px;
+  border-radius: 10px;
+  left: 50%;
+  margin-left: -3px; 
+  top: 0;
+  margin-top: 300px;
+}
+.fit-p
+{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 350px;
+    margin-left:350px;
+    font-size: 17px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.fit-p:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.fit-p1
+{
+    border: 2px solid red;
+    margin-top:10px ;
+    margin-right: 350px;
+    margin-left:350px;
+    font-size: 17px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.fit-p1:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.fit-p2
+{
+    border: 2px solid red;
+    margin-top:10px ;
+    margin-right: 500px;
+    margin-left:450px;
+    font-size: 17px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 30px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.fit-p2:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.calculate{
+    border: 2px solid red;
+    margin-top:30px ;
+    margin-right: 500px;
+    margin-left:500px;
+    font-size: 17px;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    padding: 20px;
+    backdrop-filter: blur(150px) brightness(10px) white;
+    transition: 2s;
+}
+.calculate:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.sub{
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    margin-top: 200px;
+    text-align: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 0 0 15px var(--main-color);
+}
+.sub{
+
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+.w input{
+    background-color: #131313;
+    color: var(--main-color);
+    border-radius: 10px;
+    box-sizing: 30px;
+    align-items: center;
+    padding: 20px;
+    font-size: 20px;
+    width: 500;
+}
+.weight input.type{
+    padding: 40px;
+}
+.h input{
+    background-color: #131313;
+    color: var(--main-color);
+    border-radius: 10px;
+    box-sizing: 30px;
+    align-items: center;
+    padding: 20px;
+    font-size: 20px;
+    width: 500;
+}
+button{
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+button:hover{
+    box-shadow: var(--main-color);
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+.results{
+    border: 2px solid var(--main-color);
+    margin-top: 20px;
+    color: black;
+}
+.bmi{
+    text-align: center;
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 0 0 15px var(--main-color);
+    margin-top: 200px;
+    margin-left: 60px;
+    transition: 2s;
+}
+.bmi:hover{
+    transition: 2s;
+    transform: scale(1.02);
+    text-shadow: 0 0 15px var(--main-color);
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#home" class="logo">BMI <span>CALCULATER</span></a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#Fitness">Fitness Radio</a>
+            <a href="#Calculate">Calculate</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <div class="hea">
+                <h1>BMI <span>Introduction</span></h1>
+            </div>
+            <div class="para">
+                <span class="dot"></span>
+                <div class="p1">
+                    <p>The Body Mass Index (BMI) Calculator can be used to calculate BMI value and corresponding weight status while taking age into consideration. Use the "Metric Units" tab for the International System of Units or the "Other Units"  tab to convert units into either US or metric units. Note that the calculator also computes the Ponderal Index in addition to BMI, both of which are discussed below in detail.</p>
+                </div>
+            </div>
+            <span class="dot1"></span>
+            <div class="p2">
+                <p>BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height. Specifically, the value obtained from the calculation of BMI is used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between.</p>
+            </div>
+            <div class="vl"></div>
+            <span class="dot2"></span>
+            <div class="p3">
+                <p>These ranges of BMI vary based on factors such as region and age, and are sometimes further divided into subcategories such as severely underweight or very severely obese. Being overweight or underweight can have significant health effects, so while BMI is an imperfect measure of healthy body weight, it is a useful indicator of whether any additional testing or action is required.</p>
+            </div>
+            <span class="dot3"></span>
+            <div class="p4">
+                <p>Although BMI is a widely used and useful indicator of healthy body weight, it does have its limitations. BMI is only an estimate that cannot take body composition into account. Due to a wide variety of body types as well as distribution of muscle, bone mass, and fat, BMI should be considered along with other measurements rather than being used as the sole method for determining a person's healthy body weight.</p>
+            </div>
+            <span class="dot4"></span>
+            <div class="p5">
+                <p>Below are the equations used for calculating BMI in the International System of Units (SI) and the US customary system (USC) using a 5'10", 160-pound individual as an example:
+
+                    USC Units:
+                    BMI = 703×	
+                    mass (lbs)
+                    height2 (in)
+                     = 703×	
+                    160
+                    702
+                     = 23.0
+                    SI, Metric Units:
+                    BMI = 	
+                    mass (kg)
+                    height2 (m)
+                     = 	
+                    72.57
+                    1.7782
+                     = 23.0</p>
+            </div>
+    </section>
+    <section id="Fitness" class="Fitness">
+        <div class="heading">
+        <h2>Fit<span>ness</span></h2>
+    </div>
+        <div class="fit-p">
+            <p>BMI prime is the ratio of a person's measured BMI to the upper limit of BMI that is considered "normal," by institutions such as the WHO and the CDC. Though it may differ in some countries, such as those in Asia, this upper limit, which will be referred to as BMIupper is 25 kg/m2.BMI prime allows us to make a quick assessment of how much a person's BMI differs from the upper limit of BMI that is considered normal. It also allows for comparisons between groups of people who have different upper BMI limits</p>
+            
+        </div>
+        <div class="fit-p1">
+            <p>The Ponderal Index (PI) is similar to BMI in that it measures the leanness or corpulence of a person based on their height and weight. The main difference between the PI and BMI is the cubing rather than squaring of the height in the formula (provided below). While BMI can be a useful tool when considering large populations, it is not reliable for determining leanness or corpulence in individuals. Although the PI suffers from similar considerations, the PI is more reliable for use with very tall or short individuals, while BMI tends to record uncharacteristically high or low body fat levels for those on the extreme ends of the height and weight spectrum</p>
+        </div>
+        <div class="fit-p2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRynk6VcxyTFXHd1jy8YTnu4Wh2rFO6HGlueg&s" alt="" width="500">
+        </div>
+    </section>
+    <section id="Calculate" class="Calculate">
+        <h1 class="bmi">BMI Calculator</h1>
+    <div class="calculate">
+        
+        <div class="h">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter height">
+        </div>
+        <div class="w">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter weight">
+        </div>
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        
+        <div class="result-container">
+            <h2>Your BMI: <span id="bmi-result">--</span></h2>
+            <p id="bmi-category"></p>
+        </div>
+    </div>
+</section>
+    <script>
+    function calculateBMI() {
+    let height = document.getElementById("height").value;
+    let weight = document.getElementById("weight").value;
+    let bmiResult = document.getElementById("bmi-result");
+    let bmiCategory = document.getElementById("bmi-category");
+    if (height <= 0 || weight <= 0 || isNaN(height) || isNaN(weight)) {
+        alert("Please enter valid height and weight!");
+        return;
+    }
+    let bmi = (weight / ((height / 100) ** 2)).toFixed(1);
+    bmiResult.innerText = bmi;
+    let category = "";
+    if (bmi < 18.5) {
+        category = "Underweight 🥦";
+    } else if (bmi < 24.9) {
+        category = "Normal Weight ✅";
+    } else if (bmi < 29.9) {
+        category = "Overweight ⚠️";
+    } else {
+        category = "Obese ❌";
+    }
+
+    bmiCategory.innerText = `Category: ${category}`;
+}
+</script>
+</body>
+</html>
